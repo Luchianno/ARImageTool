@@ -17,7 +17,11 @@ if (directory == null)
 
 // get all files with .png and .jpeg extensions from this folder and subfolders
 var files = Directory.GetFiles(directory, "*.*", SearchOption.AllDirectories)
-    .Where(s => s.EndsWith(".png") || s.EndsWith(".jpeg") || s.EndsWith(".jpg"));
+    .Where(s =>
+    {
+        var temp =s.ToLower();
+         return temp.EndsWith(".png") || temp.EndsWith(".jpeg") || temp.EndsWith(".jpg");
+    });
 
 var results = new StringBuilder();
 
